@@ -42,13 +42,9 @@ jobs:
             cache-plugins-
       - name: Apply deploy config
         run: |
+          SITE_URL="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
           echo "" >> mkdocs.yml
-          echo "site_url: https://docs.ebpf.io" >> mkdocs.yml
-          echo "" >> mkdocs.yml
-          echo "extra:" >> mkdocs.yml
-          echo "  analytics:" >> mkdocs.yml
-          echo "    provider: google" >> mkdocs.yml
-          echo "    property: G-KVJ1CK539N" >> mkdocs.yml
+          echo "site_url: ${SITE_URL}" >> mkdocs.yml
       - name: Build html
         run: |
           make html PROD=true GH_TOKEN=${{ secrets.GITHUB_TOKEN }}
@@ -62,5 +58,4 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
 

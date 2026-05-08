@@ -1,6 +1,6 @@
 site_name: eBPF Docs
 
-repo_url: https://github.com/isovalent/ebpf-docs
+repo_url: https://github.com/Tnsr-Q/ebpf-docs
 edit_uri: blob/master/docs/
 
 theme:
@@ -65,8 +65,8 @@ plugins:
   - git-committers:
       enabled: !ENV [PROD, false]
       token: !ENV ["GH_TOKEN"]
-      repository: isovalent/ebpf-docs
-      branch: master
+      repository: !ENV [GITHUB_REPOSITORY, "Tnsr-Q/ebpf-docs"]
+      branch: !ENV [GITHUB_REF_NAME, "master"]
   - social:
       enabled: !ENV [PROD, false]
       cards_layout_options:
